@@ -26,10 +26,26 @@ Open `.env` and fill in the required values (see [Environment variables](#enviro
 
 ---
 
+## Browsers
+
+Tests run against two browsers by default:
+
+- **Chromium** (Chrome)
+- **WebKit** (Safari)
+
+To run against a specific browser only:
+
+```bash
+npx playwright test --project=chromium
+npx playwright test --project=webkit
+```
+
+---
+
 ## Running tests
 
 ```bash
-# All tests — headless (creates "Regression Run" in Qase)
+# All tests on all browsers — headless (creates "Regression Run" in Qase)
 npm test
 
 # All tests — with browser visible
