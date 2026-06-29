@@ -14,7 +14,7 @@ export default defineConfig({
     ['playwright-qase-reporter', {
       mode: 'testops',
       testops: {
-        api: { token: process.env.QASE_API_TOKEN },
+        api: { token: process.env.QASE_TESTOPS_API_TOKEN },
         project: process.env.QASE_PROJECT ?? 'CODEH',
         uploadAttachments: true,
         run: { title: process.env.QASE_RUN_TITLE, complete: true },
