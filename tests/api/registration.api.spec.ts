@@ -31,7 +31,7 @@ function authHeaders(token: string) {
 // POST /api/web/members/register
 
 test.describe("POST /api/web/members/register", () => {
-  test("valid payload returns 201 with sessionId", async ({ request }) => {
+  test("successful registration returns 201 and a session token", async ({ request }) => {
     const { res } = await registerUser(request);
 
     expect(res.status()).toBe(201);
