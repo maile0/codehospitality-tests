@@ -7,7 +7,7 @@
     "test:headed": "QASE_RUN_TITLE='Regression Run' playwright test --project=chromium --headed",
     "test:smoke": "QASE_RUN_TITLE='Smoke Test Run' playwright test --project=smoke",
     "test:mobile": "QASE_RUN_TITLE='Mobile Regression Run' playwright test --project=mobile-chrome --project=mobile-safari",
-    "test:api": "playwright test tests/api/ --project=chromium",
+    "test:api": "QASE_RUN_TITLE='API Regression Run' playwright test tests/api/ --project=chromium",
     "report": "playwright show-report"
   },
   "keywords": [],
