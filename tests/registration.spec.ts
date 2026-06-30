@@ -22,7 +22,13 @@ test.describe("Navigation", () => {
   test(
     qase(2, "shows all 4 progress bar steps"),
     { tag: "@smoke" },
-    async ({ registerPage }) => {
+    async ({ registerPage, page }) => {
+      const viewport = page.viewportSize();
+      test.skip(
+        !!viewport && viewport.width < 768,
+        "Progress bar step labels are hidden on mobile viewports by design",
+      );
+
       await registerPage.goto();
 
       await expect(registerPage.stepRegistration).toBeVisible();

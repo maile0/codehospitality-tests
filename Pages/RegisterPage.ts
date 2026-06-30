@@ -61,13 +61,13 @@ export class RegisterPage {
 
     this.serverErrorBanner = page.locator('.q-banner.q-mb-md');
 
-    this.activationPopup = page.locator('.q-dialog__inner:visible');
-    this.activationPopupTitle = page.locator('.q-dialog__inner:visible .text-primary').filter({ hasText: 'Verification code sent' });
-    this.activationCodeInputs = page.locator('.q-dialog__inner:visible input.verify_digit');
-    this.activationSpamText = page.locator('.q-dialog__inner:visible').getByText('If there is nothing in your inbox, please check your Spam folder.');
+    this.activationPopup = page.locator('.q-dialog__inner').filter({ has: page.locator('#verificationCodeForm') });
+    this.activationPopupTitle = page.locator('#verificationCodeForm .text-primary').filter({ hasText: 'Verification code sent' });
+    this.activationCodeInputs = page.locator('#verificationCodeForm input.verify_digit');
+    this.activationSpamText = page.locator('#verificationCodeForm').getByText('If there is nothing in your inbox, please check your Spam folder.');
     this.activationResendLink = page.locator('#verificationCodeResend');
     this.activationChangeEmailLink = page.locator('#verificationCodeChangeEmail');
-    this.activationEmailDisplay = page.locator('.q-dialog__inner:visible .text-h5 strong');
+    this.activationEmailDisplay = page.locator('#verificationCodeForm .text-h5 strong');
     this.activationCodeError = page.locator('#verificationCodeForm').getByText('Error with code. Please check.');
     this.activationResendSuccess = page.locator('#verificationCodeForm .text-caption.text-positive');
     this.updateEmailPopupTitle = page.locator('#changeEmailForm').getByText('Update your email', { exact: true });

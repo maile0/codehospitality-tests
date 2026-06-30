@@ -56,6 +56,9 @@ npm run test:smoke
 
 # Open the HTML report after any run
 npm run report
+
+# Mobile suite — Pixel 5 (Chrome) + iPhone 15 Pro Max (Safari)
+npm run test:mobile
 ```
 
 ---
