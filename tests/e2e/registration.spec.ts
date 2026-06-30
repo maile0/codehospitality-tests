@@ -1,6 +1,6 @@
 import { qase } from "playwright-qase-reporter";
-import { test, expect } from "../fixtures";
-import { VALID_PASSWORD, uniqueEmail } from "../helpers/test-data";
+import { test, expect } from "../../fixtures";
+import { VALID_PASSWORD, uniqueEmail } from "../../helpers/test-data";
 
 // Navigation + Qase ID анотации за всеки тест
 

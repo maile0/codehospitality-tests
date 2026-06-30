@@ -164,14 +164,36 @@ The workflows read these from GitHub repository secrets (Settings → Secrets an
 
 ```
 ├── fixtures/
-│   └── index.ts              # Custom Playwright fixture (registerPage)
+│   └── index.ts                        # Custom Playwright fixture (registerPage)
 ├── helpers/
-│   └── test-data.ts          # Shared test data (uniqueEmail, VALID_PASSWORD)
+│   └── test-data.ts                    # Shared test data (uniqueEmail, VALID_PASSWORD)
 ├── Pages/
-│   └── RegisterPage.ts       # Page Object for the registration form
+│   └── RegisterPage.ts                 # Page Object for the registration form
 ├── tests/
-│   └── registration.spec.ts  # Test suite
+│   ├── e2e/
+│   │   └── registration.spec.ts        # UI/E2E тестове (браузър)
+│   └── api/
+│       └── registration.api.spec.ts    # API тестове (без браузър)
 ├── .env.example
 ├── playwright.config.ts
 └── tsconfig.json
 ```
+
+## API tests
+
+API тестовете покриват регистрационния flow директно срещу backend-а — без браузър, много по-бързо от E2E.
+
+```bash
+npm run test:api
+```
+
+Покрити endpoints:
+
+| Endpoint | Тестове |
+|---|---|
+| `POST /api/web/members/register` | 201 + sessionId, дублиран email, липсващи полета, невалиден email, неприети условия |
+| `POST /api/web/members/validation` | грешен код → 404 + error message |
+| `POST /api/web/members/resend-validation` | → 200 |
+| `POST /api/web/members/email` | нов email → 201, вече зает → 4xx, невалиден формат → 4xx |
+
+Автентикацията се извършва чрез `x-auth-token` header, върнат от `/register`.
